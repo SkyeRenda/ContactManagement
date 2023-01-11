@@ -35,13 +35,22 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CountryBox = new System.Windows.Forms.TextBox();
+            this.PostalCodeBox = new System.Windows.Forms.TextBox();
+            this.ProvinceBox = new System.Windows.Forms.TextBox();
+            this.CityBox = new System.Windows.Forms.TextBox();
+            this.StreetAddressBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.nameBox = new System.Windows.Forms.TextBox();
-            this.surnamebox = new System.Windows.Forms.TextBox();
+            this.NameBox = new System.Windows.Forms.TextBox();
+            this.SurnameBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.phoneBox = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.PhoneBox = new System.Windows.Forms.TextBox();
+            this.EmailBox = new System.Windows.Forms.TextBox();
+            this.CreateButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.GroupBox = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,6 +110,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.CountryBox);
+            this.groupBox1.Controls.Add(this.PostalCodeBox);
+            this.groupBox1.Controls.Add(this.ProvinceBox);
+            this.groupBox1.Controls.Add(this.CityBox);
+            this.groupBox1.Controls.Add(this.StreetAddressBox);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label2);
@@ -112,7 +126,41 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Address";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // CountryBox
+            // 
+            this.CountryBox.Location = new System.Drawing.Point(118, 185);
+            this.CountryBox.Name = "CountryBox";
+            this.CountryBox.Size = new System.Drawing.Size(157, 23);
+            this.CountryBox.TabIndex = 9;
+            // 
+            // PostalCodeBox
+            // 
+            this.PostalCodeBox.Location = new System.Drawing.Point(118, 148);
+            this.PostalCodeBox.Name = "PostalCodeBox";
+            this.PostalCodeBox.Size = new System.Drawing.Size(157, 23);
+            this.PostalCodeBox.TabIndex = 8;
+            // 
+            // ProvinceBox
+            // 
+            this.ProvinceBox.Location = new System.Drawing.Point(118, 103);
+            this.ProvinceBox.Name = "ProvinceBox";
+            this.ProvinceBox.Size = new System.Drawing.Size(157, 23);
+            this.ProvinceBox.TabIndex = 7;
+            // 
+            // CityBox
+            // 
+            this.CityBox.Location = new System.Drawing.Point(118, 60);
+            this.CityBox.Name = "CityBox";
+            this.CityBox.Size = new System.Drawing.Size(157, 23);
+            this.CityBox.TabIndex = 6;
+            // 
+            // StreetAddressBox
+            // 
+            this.StreetAddressBox.Location = new System.Drawing.Point(118, 15);
+            this.StreetAddressBox.Name = "StreetAddressBox";
+            this.StreetAddressBox.Size = new System.Drawing.Size(157, 23);
+            this.StreetAddressBox.TabIndex = 5;
             // 
             // label7
             // 
@@ -122,7 +170,6 @@
             this.label7.Size = new System.Drawing.Size(88, 15);
             this.label7.TabIndex = 7;
             this.label7.Text = "Phone Number";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
@@ -132,21 +179,20 @@
             this.label8.Size = new System.Drawing.Size(84, 15);
             this.label8.TabIndex = 8;
             this.label8.Text = "Email Address:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // nameBox
+            // NameBox
             // 
-            this.nameBox.Location = new System.Drawing.Point(148, 17);
-            this.nameBox.Name = "nameBox";
-            this.nameBox.Size = new System.Drawing.Size(163, 23);
-            this.nameBox.TabIndex = 9;
+            this.NameBox.Location = new System.Drawing.Point(148, 17);
+            this.NameBox.Name = "NameBox";
+            this.NameBox.Size = new System.Drawing.Size(163, 23);
+            this.NameBox.TabIndex = 1;
             // 
-            // surnamebox
+            // SurnameBox
             // 
-            this.surnamebox.Location = new System.Drawing.Point(148, 51);
-            this.surnamebox.Name = "surnamebox";
-            this.surnamebox.Size = new System.Drawing.Size(163, 23);
-            this.surnamebox.TabIndex = 10;
+            this.SurnameBox.Location = new System.Drawing.Point(148, 51);
+            this.SurnameBox.Name = "SurnameBox";
+            this.SurnameBox.Size = new System.Drawing.Size(163, 23);
+            this.SurnameBox.TabIndex = 2;
             // 
             // label9
             // 
@@ -157,36 +203,78 @@
             this.label9.TabIndex = 11;
             this.label9.Text = "Surname";
             // 
-            // phoneBox
+            // PhoneBox
             // 
-            this.phoneBox.Location = new System.Drawing.Point(148, 83);
-            this.phoneBox.Name = "phoneBox";
-            this.phoneBox.Size = new System.Drawing.Size(163, 23);
-            this.phoneBox.TabIndex = 12;
+            this.PhoneBox.Location = new System.Drawing.Point(148, 83);
+            this.PhoneBox.Name = "PhoneBox";
+            this.PhoneBox.Size = new System.Drawing.Size(163, 23);
+            this.PhoneBox.TabIndex = 3;
             // 
-            // textBox1
+            // EmailBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(148, 114);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(163, 23);
-            this.textBox1.TabIndex = 13;
+            this.EmailBox.Location = new System.Drawing.Point(148, 114);
+            this.EmailBox.Name = "EmailBox";
+            this.EmailBox.Size = new System.Drawing.Size(163, 23);
+            this.EmailBox.TabIndex = 4;
+            // 
+            // CreateButton
+            // 
+            this.CreateButton.Location = new System.Drawing.Point(34, 453);
+            this.CreateButton.Name = "CreateButton";
+            this.CreateButton.Size = new System.Drawing.Size(186, 23);
+            this.CreateButton.TabIndex = 10;
+            this.CreateButton.Text = "Create Contact";
+            this.CreateButton.UseVisualStyleBackColor = true;
+            this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
+            // 
+            // CancelButton
+            // 
+            this.CancelButton.Location = new System.Drawing.Point(226, 453);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(186, 23);
+            this.CancelButton.TabIndex = 11;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(30, 158);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(85, 15);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Contact Group";
+            // 
+            // GroupBox
+            // 
+            this.GroupBox.FormattingEnabled = true;
+            this.GroupBox.Location = new System.Drawing.Point(148, 150);
+            this.GroupBox.Name = "GroupBox";
+            this.GroupBox.Size = new System.Drawing.Size(163, 23);
+            this.GroupBox.TabIndex = 13;
             // 
             // AddContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.phoneBox);
+            this.ClientSize = new System.Drawing.Size(450, 509);
+            this.Controls.Add(this.GroupBox);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CreateButton);
+            this.Controls.Add(this.EmailBox);
+            this.Controls.Add(this.PhoneBox);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.surnamebox);
-            this.Controls.Add(this.nameBox);
+            this.Controls.Add(this.SurnameBox);
+            this.Controls.Add(this.NameBox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Name = "AddContactForm";
             this.Text = "AddContactForm";
+            this.Load += new System.EventHandler(this.AddContactForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -202,13 +290,22 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private GroupBox groupBox1;
         private Label label7;
         private Label label8;
-        private TextBox nameBox;
-        private TextBox surnamebox;
+        private TextBox NameBox;
+        private TextBox SurnameBox;
         private Label label9;
-        private TextBox phoneBox;
-        private TextBox textBox1;
+        private TextBox PhoneBox;
+        private TextBox EmailBox;
+        private GroupBox groupBox1;
+        private TextBox CountryBox;
+        private TextBox PostalCodeBox;
+        private TextBox ProvinceBox;
+        private TextBox CityBox;
+        private TextBox StreetAddressBox;
+        private Button CreateButton;
+        private new Button CancelButton;
+        private Label label10;
+        private ComboBox GroupBox;
     }
 }
