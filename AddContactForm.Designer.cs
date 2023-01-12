@@ -248,6 +248,8 @@
             // 
             // GroupBox
             // 
+            this.GroupBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.GroupBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.GroupBox.FormattingEnabled = true;
             this.GroupBox.Location = new System.Drawing.Point(148, 150);
             this.GroupBox.Name = "GroupBox";
@@ -272,6 +274,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AddContactForm";
             this.Text = "AddContactForm";
             this.Load += new System.EventHandler(this.AddContactForm_Load);
