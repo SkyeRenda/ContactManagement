@@ -16,6 +16,7 @@ namespace ContactManagement
 {
     public partial class Home : Form
     {
+        readonly DatabaseInteraction databaseInteraction = new DatabaseInteraction();
 
         public Home()
         {
@@ -26,7 +27,6 @@ namespace ContactManagement
         private void Home_Load(object sender, EventArgs e)
         {
 
-            DatabaseInteraction databaseInteraction = new DatabaseInteraction();
             SqlDataAdapter adapter = databaseInteraction.FetchAllData();
             DataTable dt = new DataTable();
             adapter.Fill(dt);
@@ -51,8 +51,7 @@ namespace ContactManagement
         {
             int index = dataGridView1.CurrentCell.RowIndex;
             Contact contact = createContactFromRow(index);
-            DatabaseInteraction databaseInteraction = new DatabaseInteraction();
-            bool success = databaseInteraction.EditData(contact);
+            databaseInteraction.EditData(contact);
             refreshData();
 
         }
@@ -65,19 +64,20 @@ namespace ContactManagement
             {
                 int index = dataGridView1.CurrentCell.RowIndex;
                 Contact contact = createContactFromRow(index);
-                
-                DatabaseInteraction databaseInteraction = new DatabaseInteraction();
-                bool success = databaseInteraction.DeleteData(contact);
-                if (success)
-                {
-                    refreshData();
+                try
+                { 
+                    databaseInteraction.DeleteData(contact);
+                    refreshData(); 
+                }
+                catch (Exception ex) {
+
+                    Console.WriteLine(ex.ToString());
                 }
             }
         }
         private void refreshData()
         {
             DataTable dt = new DataTable();
-            DatabaseInteraction databaseInteraction = new DatabaseInteraction();
             SqlDataAdapter adapter = databaseInteraction.FetchSearchedData(textBox1.Text);
             adapter.Fill(dt);
             dataGridView1.DataSource = dt;
@@ -88,17 +88,17 @@ namespace ContactManagement
         private Contact createContactFromRow(int index)
         {
             int id = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
-            string name = dataGridView1.Rows[index].Cells[1].Value.ToString();
-            string surname = dataGridView1.Rows[index].Cells[2].Value.ToString();
-            string address = dataGridView1.Rows[index].Cells[3].Value.ToString();
-            string city = dataGridView1.Rows[index].Cells[4].Value.ToString();
-            string province = dataGridView1.Rows[index].Cells[5].Value.ToString();
-            string postalCode = dataGridView1.Rows[index].Cells[6].Value.ToString();
-            string country = dataGridView1.Rows[index].Cells[7].Value.ToString();
-            string phone = dataGridView1.Rows[index].Cells[8].Value.ToString();
-            string emailAddress = dataGridView1.Rows[index].Cells[9].Value.ToString();
-            string contactGroup = dataGridView1.Rows[index].Cells[10].Value.ToString();
-
+            string? name = dataGridView1.Rows[index].Cells[1].Value.ToString();
+            string? surname = dataGridView1.Rows[index].Cells[2].Value.ToString();
+            string? contactGroup = dataGridView1.Rows[index].Cells[3].Value.ToString();
+            string? address = dataGridView1.Rows[index].Cells[4].Value.ToString();
+            string? city = dataGridView1.Rows[index].Cells[5].Value.ToString();
+            string? province = dataGridView1.Rows[index].Cells[6].Value.ToString();
+            string? postalCode = dataGridView1.Rows[index].Cells[7].Value.ToString();
+            string? country = dataGridView1.Rows[index].Cells[8].Value.ToString();
+            string? phone = dataGridView1.Rows[index].Cells[9].Value.ToString();
+            string? emailAddress = dataGridView1.Rows[index].Cells[10].Value.ToString();
+            
             Contact contact = new(id, name, surname, address, city, province, postalCode, country, phone, emailAddress, contactGroup);
             return contact;
 

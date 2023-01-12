@@ -33,7 +33,7 @@ namespace ContactManagement.Controllers
 
         public SqlDataAdapter FetchAllData()
         {
-            string SqlQuery = "select id as 'ID', name as 'Name', surname as 'Surname', address as 'Address', city as 'City', province as 'Province', postalCode AS 'Postal Code', country as 'Country', phone as 'Phone', emailAddress as 'Email Address' from [dbo].[Contacts]";
+            string SqlQuery = "select id as 'ID', name as 'Name', surname as 'Surname',contactGroup as 'Group', address as 'Address', city as 'City', province as 'Province', postalCode AS 'Postal Code', country as 'Country', phone as 'Phone', emailAddress as 'Email Address' from [dbo].[Contacts]";
             con = CreateConnection();
             adapt = new(SqlQuery, con);
             return adapt;
@@ -41,71 +41,68 @@ namespace ContactManagement.Controllers
 
         public SqlDataAdapter FetchSearchedData(string searchTerm)
         {
-            string SqlQuery = "select id as 'ID', name as 'Name', surname as 'Surname', address as 'Address', city as 'City', province as 'Province', postalCode AS 'Postal Code', country as 'Country', phone as 'Phone', emailAddress as 'Email Address' from [dbo].[Contacts] where Name Like '" + searchTerm + "%'";
+            string SqlQuery = $"select id as 'ID', name as 'Name', surname as 'Surname',contactGroup as 'Group', address as 'Address', city as 'City', province as 'Province', postalCode AS 'Postal Code', country as 'Country', phone as 'Phone', emailAddress as 'Email Address' from [dbo].[Contacts] where Name Like '%{searchTerm}%' OR Phone LIKE '%{searchTerm}%' ";
             con = CreateConnection();
             adapt = new(SqlQuery, con);
             return adapt;
         }
 
         
-        public bool InsertData(Contact contact)
+        public void InsertData(Contact contact)
         {
-            string SqlQuery = "insert into [dbo].[Contacts] values('" + contact.Name +"','"+ contact.Surname+"','"+ contact.Address+ "','"+contact.City+"','"+ contact.Region+ "','"+ contact.PostalCode+"','"+ contact.Country+ "','"+ contact.Phone+ "','"+contact.EmailAddress+"')";
-      
+            string SqlQuery = $"insert into [dbo].[Contacts] values('{contact.Name}','{contact.Surname}','{contact.Address}','{contact.City}','{contact.Region}','{contact.PostalCode}','{ contact.Country}','{contact.Phone}','{contact.EmailAddress}','{contact.ContactGroup}');";
+            
             con = CreateConnection();
             con.Open();
             command = new SqlCommand(SqlQuery, con);
             try
             {
                 command.ExecuteNonQuery();
-                MessageBox.Show("Succesfully Added");
                 con.Close();
-                return true;
+                
             }
-            catch (SqlException ex) {
-                MessageBox.Show(ex.Message);
+            catch {
                 con.Close();
-                return false;
+                throw new Exception("Error deleting object");
             }
         }
-        public bool EditData(Contact contact)
+        public void EditData(Contact contact)
         {
-            string SqlQuery = $"update [dbo].[Contacts] set name = '{contact.Name}', surname ='{contact.Surname}', address = '{contact.Address}', city = '{contact.City}', province = '{contact.Region}', postalCode = '{contact.PostalCode}', country ='{contact.Country}', phone = '{contact.Phone}', emailAddress = '{contact.EmailAddress}'   where id = '{contact.id}';";
+            string SqlQuery = $"UPDATE [dbo].[Contacts] SET name = '{contact.Name}', surname ='{contact.Surname}', address = '{contact.Address}', city = '{contact.City}', province = '{contact.Region}', postalCode = '{contact.PostalCode}', country ='{contact.Country}', phone = '{contact.Phone}', emailAddress = '{contact.EmailAddress}'  WHERE id = '{contact.ID}';";
+            
             con = CreateConnection();
             con.Open();
             command = new SqlCommand(SqlQuery, con);
             try
             {
                 command.ExecuteNonQuery();
-                MessageBox.Show("Succesfully Edited");
                 con.Close();
-                return true;
+                
             }
-            catch (SqlException ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+                
                 con.Close();
-                return false;
+                throw new Exception("Error editing object");
             }
         }
-            public bool DeleteData(Contact contact)
+            public void DeleteData(Contact contact)
         {
-            string SqlQuery = $"delete from [dbo].[Contacts] where id = {contact.id};";
+            string SqlQuery = $"delete from [dbo].[Contacts] where id = {contact.ID};";
             con = CreateConnection();
             con.Open();
             command = new SqlCommand(SqlQuery, con);
             try
             {
                 command.ExecuteNonQuery();
-                MessageBox.Show("Succesfully Deleted");
                 con.Close();
-                return true;
+
             }
-            catch (SqlException ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
                 con.Close();
-                return false;
+                throw new Exception("Error deleting object");
+
             }
 
         }

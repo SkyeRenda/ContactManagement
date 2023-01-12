@@ -8,7 +8,7 @@ namespace ContactManagement.Models
 {
     internal class Contact
     {
-        public int id { get; set; } = 0;
+        public int ID { get; set; } = 0;
         public string Name { get; set; } ="";
         public string Surname { get; set; } = "";
         public string Address { get; set; } = "";
@@ -20,19 +20,19 @@ namespace ContactManagement.Models
         public string EmailAddress { get; set; } = "";
 
         public string ContactGroup { get; set; } = "";
-        public Contact(int id, string name, string surname, string address, string city, string region, string postalCode, string country, string phone, string emailAddress, string contactGroup) {
-            this.id = id;
-            Name = name;
-            Surname = surname;
-            Address = address;
-            City = city;
-            Region = region;
-            PostalCode = postalCode;
-            Country = country;
-            Phone = phone;
-            EmailAddress = emailAddress;
-            ContactGroup = contactGroup;
- 
+        public Contact(int id, string? name, string? surname, string? address, string? city, string? region, string? postalCode, string? country, string? phone, string? emailAddress, string? contactGroup) {
+            this.ID = id;
+            Name = (name ==null) ? "" : name;
+            Surname = (surname == null) ? "" : surname; 
+            Address = (address == null) ? "" : address; 
+            City = (city == null) ? "" : city; 
+            Region = (region == null) ? "" : region;
+            PostalCode = (postalCode == null) ? "" : postalCode; 
+            Country = (country == null) ? "" : country;
+            Phone = (phone == null) ? "" : phone;
+            EmailAddress = (emailAddress == null) ? "" : emailAddress; 
+            ContactGroup = (contactGroup == null) ? "" : contactGroup;
+
         }
         public Contact(string name, string surname)
         {

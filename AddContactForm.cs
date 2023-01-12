@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,8 +31,15 @@ namespace ContactManagement
         {
             Contact contact = new(0,NameBox.Text, SurnameBox.Text,StreetAddressBox.Text,CityBox.Text,ProvinceBox.Text, PostalCodeBox.Text, CountryBox.Text, PhoneBox.Text, EmailBox.Text, GroupBox.Text);
             DatabaseInteraction databaseInteraction = new DatabaseInteraction();
-            bool success = databaseInteraction.InsertData(contact);
-            if (success == true ) { Close(); };
+            try
+            {
+                databaseInteraction.InsertData(contact);
+                Close();
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
         private void AddContactForm_Load(object sender, EventArgs e)

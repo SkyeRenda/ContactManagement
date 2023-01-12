@@ -132,35 +132,35 @@
             this.CountryBox.Location = new System.Drawing.Point(118, 185);
             this.CountryBox.Name = "CountryBox";
             this.CountryBox.Size = new System.Drawing.Size(157, 23);
-            this.CountryBox.TabIndex = 9;
+            this.CountryBox.TabIndex = 10;
             // 
             // PostalCodeBox
             // 
             this.PostalCodeBox.Location = new System.Drawing.Point(118, 148);
             this.PostalCodeBox.Name = "PostalCodeBox";
             this.PostalCodeBox.Size = new System.Drawing.Size(157, 23);
-            this.PostalCodeBox.TabIndex = 8;
+            this.PostalCodeBox.TabIndex = 10;
             // 
             // ProvinceBox
             // 
             this.ProvinceBox.Location = new System.Drawing.Point(118, 103);
             this.ProvinceBox.Name = "ProvinceBox";
             this.ProvinceBox.Size = new System.Drawing.Size(157, 23);
-            this.ProvinceBox.TabIndex = 7;
+            this.ProvinceBox.TabIndex = 9;
             // 
             // CityBox
             // 
             this.CityBox.Location = new System.Drawing.Point(118, 60);
             this.CityBox.Name = "CityBox";
             this.CityBox.Size = new System.Drawing.Size(157, 23);
-            this.CityBox.TabIndex = 6;
+            this.CityBox.TabIndex = 8;
             // 
             // StreetAddressBox
             // 
             this.StreetAddressBox.Location = new System.Drawing.Point(118, 15);
             this.StreetAddressBox.Name = "StreetAddressBox";
             this.StreetAddressBox.Size = new System.Drawing.Size(157, 23);
-            this.StreetAddressBox.TabIndex = 5;
+            this.StreetAddressBox.TabIndex = 7;
             // 
             // label7
             // 
@@ -252,7 +252,7 @@
             this.GroupBox.Location = new System.Drawing.Point(148, 150);
             this.GroupBox.Name = "GroupBox";
             this.GroupBox.Size = new System.Drawing.Size(163, 23);
-            this.GroupBox.TabIndex = 13;
+            this.GroupBox.TabIndex = 5;
             // 
             // AddContactForm
             // 
